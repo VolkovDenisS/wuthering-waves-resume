@@ -1,0 +1,75 @@
+<div class="h-full animate-fade-in flex flex-col justify-start relative max-w-6xl py-8 md:py-0 overflow-y-auto overflow-x-hidden custom-scrollbar">
+  <div class="absolute -top-10 -right-10 text-[6rem] md:text-[9rem] font-bold text-white/[0.03] select-none pointer-events-none z-[-1] leading-none uppercase text-right">
+    GAMES
+  </div>
+
+  <div class="mb-8 md:mb-12 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
+    <h1 class="text-4xl md:text-7xl font-bold tracking-widest uppercase text-white">Games</h1>
+    <span class="text-ww-accent font-mono text-xs md:text-sm tracking-mega">[ ONLINE IDS / CO-OP SIGNALS ]</span>
+  </div>
+
+  <section class="ww-glass clip-slant p-5 md:p-7 mb-6 md:mb-8 max-w-3xl">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2 h-2 rotate-45 bg-ww-accent shadow-[0_0_10px_rgba(243,200,79,0.7)]"></span>
+          <span class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.4em]">Player Alias</span>
+        </div>
+        <h2 class="text-white text-3xl md:text-5xl font-bold uppercase tracking-widest">{{ nickname }}</h2>
+      </div>
+
+      <div class="text-left sm:text-right">
+        <p class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.35em] mb-2">Network Status</p>
+        <p class="inline-flex items-center gap-2 text-green-400 font-bold uppercase tracking-widest text-xs md:text-sm">
+          <span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_12px_rgba(74,222,128,0.9)]"></span>
+          Available
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-5 pb-10">
+    <article *ngFor="let account of accounts" class="game-card clip-slant ww-glass p-5 md:p-6" [ngClass]="'game-card--' + account.tone">
+      <div class="flex items-start justify-between gap-4 mb-8">
+        <div>
+          <p class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.35em] mb-3">Online Game</p>
+          <h3 class="text-white text-xl md:text-2xl font-bold uppercase tracking-widest leading-tight">{{ account.title }}</h3>
+        </div>
+        <span class="game-card__mark"></span>
+      </div>
+
+      <div class="border-t border-white/10 pt-5">
+        <p class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.35em] mb-2">UID</p>
+        <div class="flex items-center gap-3">
+          <p class="game-card__uid font-mono text-2xl md:text-3xl font-bold tracking-[0.18em]">{{ account.uid }}</p>
+          <button
+            type="button"
+            class="copy-uid-button cursor-pointer"
+            [class.copy-uid-button--copied]="copiedUid === account.uid"
+            [attr.aria-label]="'Copy UID ' + account.uid"
+            (click)="copyUid(account.uid)"
+          >
+            <svg *ngIf="copiedUid !== account.uid" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 8h10v10H8z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+            </svg>
+            <svg *ngIf="copiedUid === account.uid" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 13 4 4L19 7" />
+            </svg>
+          </button>
+          <span *ngIf="copiedUid === account.uid" class="text-[9px] font-mono uppercase tracking-[0.24em] text-white/80">Copied</span>
+        </div>
+      </div>
+
+      <div class="mt-5 flex items-center justify-between gap-4">
+        <span class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.3em]">Callsign</span>
+        <span class="text-white font-bold uppercase tracking-widest text-sm">{{ nickname }}</span>
+      </div>
+
+      <div class="mt-3 flex items-center justify-between gap-4">
+        <span class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.3em]">Region</span>
+        <span class="text-ww-text font-mono uppercase tracking-widest text-[10px]">{{ account.region }}</span>
+      </div>
+    </article>
+  </section>
+</div>

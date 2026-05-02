@@ -1,0 +1,87 @@
+.game-card {
+  --game-color: #f3c84f;
+  position: relative;
+  min-height: 18rem;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--game-color) 28%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--game-color) 10%, transparent), transparent 58%),
+    rgba(14, 17, 23, 0.72);
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--game-color) 24%, transparent), transparent 34%);
+  pointer-events: none;
+}
+
+.game-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.game-card__mark {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--game-color);
+  background: color-mix(in srgb, var(--game-color) 28%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--game-color) 58%, transparent);
+  transform: rotate(45deg);
+}
+
+.game-card__uid {
+  color: var(--game-color);
+  font-size: clamp(1.45rem, 2.8vw, 1.875rem);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--game-color) 42%, transparent);
+  white-space: nowrap;
+}
+
+.copy-uid-button {
+  display: inline-grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--game-color);
+  opacity: 0.78;
+  transition: transform 160ms ease, filter 160ms ease, opacity 160ms ease;
+  transform: translateY(0.02em);
+}
+
+.copy-uid-button:hover,
+.copy-uid-button--copied {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--game-color) 65%, transparent));
+  opacity: 1;
+}
+
+.copy-uid-button:hover {
+  transform: translateY(0.02em) scale(1.1);
+}
+
+.game-card--ww { --game-color: #6ee7b7; }
+.game-card--star { --game-color: #a78bfa; }
+.game-card--zero { --game-color: #f97316; }
+
+.game-card--ww {
+  background:
+    linear-gradient(90deg, rgba(7, 10, 14, 0.94), rgba(7, 10, 14, 0.68) 48%, rgba(7, 10, 14, 0.9)),
+    linear-gradient(180deg, rgba(110, 231, 183, 0.16), transparent 62%),
+    url('/games-wuwa.jpg') center / cover;
+}
+
+.game-card--star {
+  background:
+    linear-gradient(90deg, rgba(7, 10, 14, 0.94), rgba(7, 10, 14, 0.66) 48%, rgba(7, 10, 14, 0.9)),
+    linear-gradient(180deg, rgba(167, 139, 250, 0.16), transparent 62%),
+    url('/games-honkai.jpeg') center / cover;
+}
+
+.game-card--zero {
+  background:
+    linear-gradient(90deg, rgba(7, 10, 14, 0.94), rgba(7, 10, 14, 0.64) 48%, rgba(7, 10, 14, 0.9)),
+    linear-gradient(180deg, rgba(249, 115, 22, 0.16), transparent 62%),
+    url('/games-zenless.webp') center / cover;
+}

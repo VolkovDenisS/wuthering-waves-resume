@@ -6,6 +6,7 @@ import { Skills } from './screens/skills/skills';
 import { Inventory } from './screens/inventory/inventory';
 import { Archives } from './screens/archives/archives';
 import { Contacts } from './screens/contacts/contacts';
+import { Games } from './screens/games/games';
 
 export const routes: Routes = [
   { path: '', component: Splash },
@@ -18,6 +19,7 @@ export const routes: Routes = [
       { path: 'skills', component: Skills },
       { path: 'inventory', component: Inventory },
       { path: 'travels', loadComponent: () => import('./screens/travels/travels').then((m) => m.Travels) },
+      { path: 'games', component: Games },
       { path: 'archives', component: Archives },
       { path: 'contacts', component: Contacts }
     ]

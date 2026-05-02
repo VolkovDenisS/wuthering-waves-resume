@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
     @apply bg-ww-bg text-ww-text font-sans overflow-hidden select-none m-0 p-0;
   }
@@ -19,6 +20,14 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-ww-accent;
+  }
+}
+
+@media (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
   }
 }
 

@@ -1,1 +1,13 @@
 <router-outlet></router-outlet>
+<div
+  class="site-cursor"
+  [class.site-cursor--visible]="cursorVisible()"
+  [class.site-cursor--link]="cursorMode() === 'link'"
+  [class.site-cursor--text]="cursorMode() === 'text'"
+  [class.site-cursor--vertical]="cursorMode() === 'vertical'"
+  [class.site-cursor--horizontal]="cursorMode() === 'horizontal'"
+  [style.transform]="'translate3d(' + cursorX() + 'px, ' + cursorY() + 'px, 0)'"
+  aria-hidden="true"
+>
+  <img [src]="cursorAsset()" alt="" />
+</div>
