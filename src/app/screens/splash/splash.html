@@ -1,0 +1,45 @@
+<div #splashContainer class="relative w-full h-[100dvh] flex flex-col items-center justify-center bg-ww-bg text-ww-text cursor-pointer overflow-hidden" (click)="startGame()">
+  
+  <!-- Background Layers -->
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-35 mix-blend-screen"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-ww-bg via-black/60 to-transparent"></div>
+  <div class="absolute inset-x-0 top-1/2 h-40 -translate-y-1/2 bg-gradient-to-r from-transparent via-ww-cyan/10 to-transparent blur-3xl"></div>
+  <div class="absolute inset-0 scanlines pointer-events-none opacity-50 z-50"></div>
+
+  <!-- Decorative HUD Elements -->
+  <div class="absolute top-8 left-8 flex items-center gap-2 opacity-50">
+    <div class="w-1.5 h-1.5 bg-ww-accent rotate-45"></div>
+    <span class="font-mono text-[10px] tracking-widest uppercase">SYS.INIT v1.0.4</span>
+  </div>
+  <div class="absolute bottom-8 right-8 flex items-center gap-2 opacity-50">
+    <span class="font-mono text-[10px] tracking-widest uppercase">AWAITING RESONANCE</span>
+    <div class="w-1.5 h-1.5 bg-ww-cyan rotate-45"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="z-10 flex flex-col items-center text-center mt-[-5vh] md:mt-[-10vh] px-6">
+    
+    <div class="w-12 h-12 md:w-16 md:h-16 mb-6 md:mb-8 relative flex items-center justify-center drop-shadow-[0_0_24px_rgba(0,229,255,0.45)]">
+      <div class="absolute inset-0 rotate-45 border-2 border-ww-accent/30 animate-[spin_10s_linear_infinite]"></div>
+      <div class="absolute inset-2 rotate-[-45deg] border border-ww-cyan/30 animate-[spin_8s_linear_infinite_reverse]"></div>
+      <div class="w-2 h-2 bg-white rotate-45 shadow-[0_0_10px_#fff]"></div>
+    </div>
+
+    <h1 class="text-4xl md:text-8xl font-sans font-bold tracking-widest uppercase mb-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 glitch-effect" data-text="DENIS VOLKOV">
+      DENIS VOLKOV
+    </h1>
+    <h2 class="text-ww-cyan/80 font-mono text-[10px] md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase mb-12 md:mb-16">
+      Resonator Profile
+    </h2>
+    
+    <div #startText class="flex flex-col items-center animate-pulse">
+      <p class="text-xs md:text-sm tracking-[0.3em] font-mono text-ww-accent uppercase mb-2">
+        Click to Start
+      </p>
+      <div class="w-px h-8 md:h-12 bg-gradient-to-b from-ww-accent to-transparent"></div>
+    </div>
+  </div>
+  
+  <!-- Overlay for transition -->
+  <div #transitionOverlay class="absolute inset-0 bg-white z-50 pointer-events-none opacity-0 mix-blend-overlay"></div>
+</div>

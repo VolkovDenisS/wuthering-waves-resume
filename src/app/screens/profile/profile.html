@@ -1,0 +1,131 @@
+<div class="h-full flex flex-col justify-center animate-fade-in max-w-6xl relative py-8 md:py-0 overflow-y-auto overflow-x-hidden custom-scrollbar">
+  
+  <!-- Decorative background text -->
+  <div class="absolute -top-10 -left-10 text-[6rem] md:text-[10rem] font-bold text-white/[0.03] select-none pointer-events-none z-[-1] leading-none uppercase">
+    HELIX
+  </div>
+
+  <div class="mb-6 md:mb-10 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
+    <h1 class="text-4xl md:text-7xl font-bold tracking-widest uppercase text-white">Profile</h1>
+    <span class="text-ww-accent font-mono text-xs md:text-sm tracking-mega">[ INFO / RESONANCE ]</span>
+  </div>
+
+  <!-- Top Section: Card & Stats -->
+  <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-stretch mb-8 lg:mb-12">
+    
+    <!-- Character/Role Card -->
+    <div class="w-full lg:w-3/5">
+      <div class="clip-slant ww-glass p-6 md:p-8 relative overflow-hidden group h-full flex flex-col">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-ww-accent/10 to-transparent z-[-1]"></div>
+        <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-ww-accent to-transparent"></div>
+        
+        <div class="mb-4 md:mb-6">
+          <h3 class="text-white text-2xl md:text-3xl font-bold uppercase tracking-widest mb-1">Denis Volkov</h3>
+          <p class="text-ww-cyan font-mono text-xs md:text-sm uppercase tracking-[0.3em]">Development Team Lead</p>
+        </div>
+
+        <p class="text-ww-text leading-relaxed font-sans text-sm md:text-base mb-6 max-w-2xl">
+          Experienced Developer and Team Lead specializing in the <span class="text-ww-accent font-bold">BMC Helix</span> platform. Managing agile teams, optimizing processes, and engineering complex solutions across full-stack applications.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 md:gap-8 mt-auto">
+          <div class="flex flex-col">
+            <span class="text-ww-muted text-[10px] uppercase font-mono tracking-widest mb-1">Level</span>
+            <span class="text-white font-bold text-lg md:text-2xl">10+</span>
+          </div>
+          <div class="w-[1px] bg-ww-border/50 hidden md:block"></div>
+          <div class="flex flex-col">
+            <span class="text-ww-muted text-[10px] uppercase font-mono tracking-widest mb-1">Element</span>
+            <span class="text-ww-accent font-bold text-lg md:text-2xl">Fullstack</span>
+          </div>
+          <div class="w-[1px] bg-ww-border/50 hidden md:block"></div>
+          <div class="flex flex-col">
+            <span class="text-ww-muted text-[10px] uppercase font-mono tracking-widest mb-1">Affiliation</span>
+            <span class="text-ww-cyan font-bold text-lg md:text-2xl">Kaspersky</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Stats & Active Skill -->
+    <div class="w-full lg:w-2/5 flex flex-col gap-4">
+      <div class="ww-glass p-5 md:p-6 flex flex-col gap-3 border border-white/5">
+        <div class="flex items-center justify-between gap-4 border-b border-white/5 pb-2 group transition-colors">
+          <span class="text-ww-muted font-mono text-[10px] md:text-xs uppercase tracking-widest">Location</span>
+          <span class="text-white font-bold tracking-widest uppercase text-[10px] md:text-sm">Moscow, RU</span>
+        </div>
+        <div class="flex items-center justify-between gap-4 border-b border-white/5 pb-2 pt-1 group transition-colors">
+          <span class="text-ww-muted font-mono text-[10px] md:text-xs uppercase tracking-widest">Status</span>
+          <span class="text-ww-cyan font-bold tracking-widest uppercase text-[10px] md:text-sm shadow-ww-cyan drop-shadow-[0_0_3px_#00e5ff]">Online</span>
+        </div>
+        
+        <div class="mt-2 md:mt-4 p-4 bg-ww-accent/5 border border-ww-accent/20 clip-slant">
+          <div class="flex items-center gap-3 mb-2">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4 text-ww-accent"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span class="text-ww-accent font-mono text-[10px] uppercase tracking-widest">Active Skill</span>
+          </div>
+          <p class="text-white font-bold text-xs uppercase tracking-widest">Team Management & Architecture</p>
+          <p class="text-ww-muted text-[10px] mt-1 uppercase leading-tight">Directing development of high-load enterprise systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section: Horizontal Resonance Journey -->
+  <div class="w-full relative py-6 md:py-10 px-4 md:px-8 ww-glass border border-white/5">
+    <div class="absolute top-3 left-5 flex items-center gap-3">
+      <div class="w-1.5 h-1.5 bg-ww-accent rotate-45"></div>
+      <span class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.4em]">Resonance Journey / Experience Timeline</span>
+    </div>
+
+    <!-- Scrollable container for mobile - added more height (h-56) for tooltips -->
+    <div class="overflow-x-auto custom-scrollbar pt-20">
+      <div class="relative min-w-[700px] lg:min-w-full h-32 flex items-center px-8">
+        <!-- Main Horizontal Glowing Line -->
+        <div class="absolute left-0 right-0 h-[2px] bg-white/10 z-0"></div>
+        <div class="absolute left-0 w-[96%] h-[2px] bg-gradient-to-r from-ww-accent via-ww-accent to-ww-cyan z-0 shadow-[0_0_15px_rgba(243,200,79,0.4)]"></div>
+
+        <!-- Nodes Wrapper -->
+        <div class="flex justify-between w-full relative z-10">
+          
+          <div *ngFor="let node of journey" class="flex flex-col items-center relative">
+            
+            <!-- Tooltip (Company Name) - Removed clip-path to fix borders -->
+            <div *ngIf="activeNode?.id === node.id" 
+                 class="absolute -top-16 left-1/2 -translate-x-1/2 bg-ww-bg border-2 border-ww-accent/60 px-5 py-2 animate-fade-in z-[100] shadow-[0_0_20px_rgba(0,0,0,0.9)] min-w-[140px] text-center rounded-sm">
+              <span class="text-ww-accent font-mono text-[9px] md:text-[10px] uppercase block mb-0.5 tracking-widest">Affiliation</span>
+              <span class="text-white font-bold text-xs md:text-sm uppercase tracking-widest whitespace-nowrap">{{ node.company }}</span>
+              <!-- Tooltip Arrow -->
+              <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-ww-bg border-r-2 border-b-2 border-ww-accent/60 rotate-45"></div>
+            </div>
+
+            <!-- Node Diamond -->
+            <div (click)="toggleTooltip(node)"
+                 class="w-5 h-5 md:w-6 md:h-6 rotate-45 cursor-pointer transition-all hover:scale-125 border border-white/50 mb-4 flex items-center justify-center relative"
+                 [ngClass]="{
+                   'bg-ww-accent shadow-[0_0_12px_#f3c84f]': node.colorClass === 'ww-accent',
+                   'bg-ww-cyan shadow-[0_0_12px_#00e5ff]': node.colorClass === 'ww-cyan',
+                   'bg-white shadow-[0_0_25px_#fff] border-2 border-ww-accent animate-pulse': node.isActive
+                 }">
+              <div *ngIf="activeNode?.id === node.id" class="absolute inset-[-6px] border border-ww-accent/50 rotate-0 animate-ping opacity-30"></div>
+            </div>
+
+            <!-- Label -->
+            <div class="text-center">
+              <p class="font-mono text-[10px] md:text-xs uppercase mb-1 tracking-wider" 
+                 [ngClass]="node.isActive ? 'text-white' : 'text-ww-muted'">{{ node.year }}</p>
+              <p class="font-bold text-[10px] md:text-xs uppercase tracking-widest whitespace-nowrap"
+                 [ngClass]="node.isActive ? 'text-ww-accent' : 'text-white/80'">{{ node.role }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <!-- Hint for mobile -->
+    <div class="lg:hidden text-center mt-4">
+      <span class="text-ww-muted font-mono text-[8px] uppercase tracking-widest opacity-40"><< Swipe to see full resonance >></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="h-full animate-fade-in flex flex-col relative max-w-5xl py-8 md:py-0">
+  <div class="absolute -top-10 -right-10 text-[6rem] md:text-[8rem] font-bold text-white/[0.03] select-none pointer-events-none z-[-1] leading-none uppercase text-right">
+    ECHOES
+  </div>
+
+  <div class="mb-8 md:mb-12 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
+    <h1 class="text-4xl md:text-7xl font-bold tracking-widest uppercase text-white">Echoes</h1>
+    <span class="text-ww-accent font-mono text-xs md:text-sm tracking-mega">[ ARTIFACTS & EXP ]</span>
+  </div>
+
+  <!-- Inventory Grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 overflow-y-auto pb-12 pr-2">
+    
+    <!-- Experience Items -->
+    <div *ngFor="let exp of experiences" 
+         class="group clip-slant ww-glass aspect-square flex flex-col items-center justify-center cursor-pointer transition-all overflow-hidden relative"
+         [ngClass]="exp.theme.hoverBorder"
+         (click)="selectExperience(exp)">
+      <div class="absolute inset-0 bg-gradient-to-t opacity-0 group-hover:opacity-100 transition-opacity" [ngClass]="exp.theme.gradient"></div>
+      <div class="w-8 h-8 md:w-12 md:h-12 mb-2 md:mb-3 relative flex items-center justify-center">
+        <div class="absolute inset-0 rotate-45 border transition-colors" [ngClass]="[exp.theme.iconBorder, exp.theme.iconHoverBorder]"></div>
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4 md:w-6 md:h-6 relative z-10 group-hover:scale-110 transition-transform" [ngClass]="exp.theme.text">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="exp.icon"></path>
+        </svg>
+      </div>
+      <span class="text-[8px] md:text-[10px] font-mono text-ww-text group-hover:text-white uppercase tracking-widest text-center px-2">{{ exp.company }}</span>
+    </div>
+
+    <!-- Empty slots for visual effect -->
+    <div *ngFor="let i of [1,2,3,4,5,6,7]" class="clip-slant aspect-square bg-transparent border border-ww-border/30 flex flex-col items-center justify-center opacity-30 md:opacity-50 relative">
+      <div class="w-6 h-6 md:w-8 md:h-8 rotate-45 border border-ww-border/30 mb-2"></div>
+      <span class="text-ww-border font-mono text-[6px] md:text-[8px] uppercase tracking-widest">Empty</span>
+    </div>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div *ngIf="selectedExperience" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 backdrop-blur-md bg-black/80 animate-fade-in">
+    
+    <div class="clip-slant ww-glass max-w-2xl w-full max-h-[90dvh] p-6 md:p-12 relative flex flex-col border overflow-hidden" [ngClass]="selectedExperience.theme.modalBorder">
+      
+      <!-- Close Button -->
+      <button (click)="closeModal()" class="absolute top-4 md:top-6 right-4 md:right-8 text-ww-muted hover:text-white transition-colors z-10">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6 md:w-8 md:h-8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Header -->
+      <div class="mb-6 md:mb-8">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-2 h-2 rotate-45" [ngClass]="selectedExperience.theme.bg"></div>
+          <span class="font-mono text-[10px] md:text-xs uppercase tracking-widest text-ww-muted">{{ selectedExperience.period }}</span>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-bold uppercase tracking-widest text-white mb-2 pr-8">{{ selectedExperience.company }}</h2>
+        <p class="text-base md:text-lg font-mono text-ww-text">{{ selectedExperience.role }}</p>
+        <p class="text-[10px] md:text-xs font-mono text-ww-muted mt-1 uppercase tracking-widest">{{ selectedExperience.location }}</p>
+      </div>
+
+      <!-- Description -->
+      <div class="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8 overflow-y-auto pr-4 custom-scrollbar">
+        <p *ngFor="let desc of selectedExperience.description" class="text-ww-text leading-relaxed text-xs md:text-base border-l-2 pl-4 py-1" [ngClass]="selectedExperience.theme.descBorder">
+          {{ desc }}
+        </p>
+      </div>
+
+      <!-- Skills Tags -->
+      <div class="flex flex-wrap gap-2 mt-auto">
+        <span *ngFor="let skill of selectedExperience.skills" class="px-2 md:px-3 py-1 bg-white/5 border border-white/10 text-[8px] md:text-xs font-mono uppercase tracking-widest text-white">
+          {{ skill }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>
