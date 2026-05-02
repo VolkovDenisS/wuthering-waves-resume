@@ -1,0 +1,101 @@
+<div class="h-full animate-fade-in flex flex-col relative max-w-6xl 2xl:max-w-[1500px] py-8 md:py-0 overflow-y-auto overflow-x-hidden custom-scrollbar">
+  <div class="absolute -top-10 -right-10 text-[5rem] md:text-[8rem] font-bold text-white/[0.03] select-none pointer-events-none z-[-1] leading-none uppercase text-right">
+    WORLD
+  </div>
+
+  <div class="mb-8 md:mb-10 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
+    <h1 class="text-4xl md:text-7xl font-bold tracking-widest uppercase text-white">Travel Map</h1>
+    <span class="text-ww-accent font-mono text-xs md:text-sm tracking-mega">[ 3D GLOBE / WAYPOINTS ]</span>
+  </div>
+
+  <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(440px,0.85fr)] 2xl:grid-cols-[minmax(720px,1.2fr)_minmax(560px,0.8fr)] gap-6 lg:gap-8 2xl:gap-10 pb-12">
+    <section class="ww-glass clip-slant relative overflow-hidden min-h-[520px] md:min-h-[660px] 2xl:min-h-[760px]">
+      <div class="absolute top-4 left-5 flex items-center gap-3 z-20">
+        <div class="w-1.5 h-1.5 bg-ww-cyan rotate-45 shadow-[0_0_8px_#00e5ff]"></div>
+        <span class="text-ww-muted font-mono text-[10px] uppercase tracking-[0.4em]">Earth link online</span>
+      </div>
+
+      <div class="absolute bottom-4 left-5 z-20 flex flex-wrap gap-2">
+        <span class="px-2 py-1 bg-black/40 border border-white/10 text-ww-muted font-mono text-[8px] uppercase tracking-widest">Drag to rotate</span>
+        <span class="px-2 py-1 bg-black/40 border border-white/10 text-ww-muted font-mono text-[8px] uppercase tracking-widest">Scroll to zoom</span>
+      </div>
+
+      <div #globeContainer class="travel-globe-webgl absolute inset-0"></div>
+    </section>
+
+    <aside class="flex flex-col gap-4">
+      <div class="ww-glass clip-slant p-5 md:p-6 2xl:p-8 h-[266px] md:h-[270px] 2xl:h-[320px] flex flex-col">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-2 h-2 bg-ww-accent rotate-45"></div>
+          <span class="font-mono text-[10px] uppercase tracking-[0.35em] text-ww-accent">{{ selectedPoint ? 'Selected waypoint' : 'Travel archive' }}</span>
+        </div>
+
+        <h2
+          class="travel-title font-bold uppercase text-white mb-2"
+        >
+          {{ selectedPoint?.city ?? 'Waypoint Grid' }}
+        </h2>
+        <p class="text-ww-cyan font-mono text-xs uppercase tracking-[0.3em] mb-4">{{ selectedPoint?.country ?? '25 cities / 9 countries' }}</p>
+        <div class="border-t border-white/10 pt-4 flex flex-col gap-3 mt-auto">
+          <div class="flex items-center justify-between gap-4">
+            <span class="text-ww-muted font-mono text-[10px] uppercase tracking-widest">Region</span>
+            <span class="text-white font-bold text-xs uppercase tracking-widest text-right">{{ selectedPoint?.region ?? 'Choose a country' }}</span>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <span class="text-ww-muted font-mono text-[10px] uppercase tracking-widest">Signal</span>
+            <span class="text-ww-accent font-bold text-xs uppercase tracking-widest">{{ selectedPoint ? 'Visited' : 'Standby' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 2xl:gap-4">
+        <div class="ww-glass p-4 2xl:p-6 border border-white/5">
+          <span class="text-ww-muted text-[10px] uppercase font-mono tracking-widest block mb-1">Cities</span>
+          <span class="text-white text-3xl 2xl:text-4xl font-bold">{{ travelPoints.length }}</span>
+        </div>
+        <div class="ww-glass p-4 2xl:p-6 border border-white/5">
+          <span class="text-ww-muted text-[10px] uppercase font-mono tracking-widest block mb-1">Countries</span>
+          <span class="text-ww-cyan text-3xl 2xl:text-4xl font-bold">{{ visitedCountries }}</span>
+        </div>
+      </div>
+
+      <div class="ww-glass clip-slant p-4 md:p-5 2xl:p-6 h-[360px] 2xl:h-[520px] overflow-y-auto custom-scrollbar">
+        <div class="flex flex-col gap-2">
+          <div *ngFor="let group of countryGroups" class="border border-white/5 bg-white/[0.03]">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between gap-3 p-3 hover:bg-white/5 transition-colors text-left"
+              [class.text-ww-accent]="group.country === selectedPoint?.country"
+              (click)="toggleCountry(group.country)"
+            >
+              <span class="flex items-center gap-3 min-w-0">
+                <span class="w-2 h-2 rotate-45 border border-current"></span>
+                <span class="text-white font-bold text-xs uppercase tracking-widest truncate">{{ group.country }}</span>
+              </span>
+              <span class="flex items-center gap-3">
+                <span class="text-ww-muted font-mono text-[9px] uppercase tracking-widest">{{ group.points.length }} city</span>
+                <span class="text-ww-muted font-mono text-xs transition-transform" [class.rotate-90]="isCountryExpanded(group.country)">></span>
+              </span>
+            </button>
+
+            <div *ngIf="isCountryExpanded(group.country)" class="flex flex-col gap-2 px-3 pb-3 animate-fade-in">
+              <button
+                *ngFor="let point of group.points; index as index"
+                type="button"
+                class="flex items-center justify-between gap-3 p-3 bg-black/20 border border-white/5 hover:border-ww-cyan/40 transition-colors text-left"
+                [class.border-ww-accent]="selectedPoint?.id === point.id"
+                (click)="selectPoint(point)"
+              >
+                <span class="flex items-center gap-3 min-w-0">
+                  <span class="text-ww-muted font-mono text-[9px] tracking-widest">{{ (index + 1).toString().padStart(2, '0') }}</span>
+                  <span class="text-white font-bold text-xs uppercase tracking-widest truncate">{{ point.city }}</span>
+                </span>
+                <span class="text-ww-muted font-mono text-[9px] uppercase tracking-widest">{{ point.region }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

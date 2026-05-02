@@ -1,8 +1,8 @@
 <div #mainLayout class="w-full h-[100dvh] bg-ww-bg flex overflow-hidden relative font-sans text-ww-text">
   
   <!-- Background Layers -->
-  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-screen"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+  <div class="absolute inset-0 ww-resonance-bg"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
   <div class="absolute inset-0 scanlines pointer-events-none opacity-50 z-50"></div>
 
   <!-- Decorative Corner Brackets -->
@@ -10,7 +10,7 @@
   <div class="absolute bottom-4 left-4 w-8 h-8 md:w-12 md:h-12 border-b-2 border-l-2 border-ww-border z-10 opacity-30 md:opacity-50"></div>
 
   <!-- Main Content Area (Left/Center) -->
-  <main class="flex-1 relative z-10 h-full p-4 md:p-16 pl-6 md:pl-24 overflow-y-auto overflow-x-hidden">
+  <main class="flex-1 relative z-10 h-full p-4 md:p-16 2xl:p-12 pl-6 md:pl-24 2xl:pl-20 overflow-y-auto overflow-x-hidden">
     <router-outlet></router-outlet>
   </main>
 
@@ -50,6 +50,15 @@
       </a>
 
       <!-- Nav Item 4 -->
+      <a routerLink="/main/travels" routerLinkActive="active" 
+         aria-label="Open travel map"
+         class="clip-slant-tab w-full flex items-center justify-end px-3 md:px-4 py-3 md:py-4 bg-transparent text-ww-muted cursor-pointer group">
+        <span class="block md:hidden font-bold tracking-widest uppercase text-[9px] mr-2 group-[.active]:text-ww-bg">Map</span>
+        <span class="hidden md:block font-bold tracking-widest uppercase text-sm mr-4 group-[.active]:text-ww-bg">World Map</span>
+        <div class="w-2 h-2 rotate-45 border border-current group-[.active]:bg-ww-bg"></div>
+      </a>
+
+      <!-- Nav Item 5 -->
       <a routerLink="/main/archives" routerLinkActive="active" 
          aria-label="Open data bank"
          class="clip-slant-tab w-full flex items-center justify-end px-3 md:px-4 py-3 md:py-4 bg-transparent text-ww-muted cursor-pointer group">
@@ -58,7 +67,7 @@
         <div class="w-2 h-2 rotate-45 border border-current group-[.active]:bg-ww-bg"></div>
       </a>
 
-      <!-- Nav Item 5 -->
+      <!-- Nav Item 6 -->
       <a routerLink="/main/contacts" routerLinkActive="active" 
          aria-label="Open comms"
          class="clip-slant-tab w-full flex items-center justify-end px-3 md:px-4 py-3 md:py-4 bg-transparent text-ww-muted cursor-pointer group">

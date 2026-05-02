@@ -25,12 +25,14 @@ During the project, I gained extensive experience in data migration and customiz
 
  «BMC Remedy», «JavaScript» и еще 3 навыка
 
-Эмблема организации CFI 
+Senior Developper
+дек. 2020 г. – дек 2021 г.
+
 Development Team Lead
 
 CFI  · Полный рабочий день
 
-дек. 2020 г. – июнь 2023 г. · 2 г. 7 мес.
+дек. 2021 г. – июнь 2023 г.
 
 Баку, Бакинская Экономическая Зона, Азербайджан · Гибридный формат работы
 
@@ -44,6 +46,10 @@ As an experienced developer, I currently specialize in utilizing the Remedy Deve
 Полный рабочий день · 5 лет 1 мес.
 
 Краснодар, Краснодарский край, Россия
+
+
+
+
 
 Development Team Lead
 

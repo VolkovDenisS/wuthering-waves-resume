@@ -17,6 +17,7 @@ export const routes: Routes = [
       { path: 'profile', component: Profile },
       { path: 'skills', component: Skills },
       { path: 'inventory', component: Inventory },
+      { path: 'travels', loadComponent: () => import('./screens/travels/travels').then((m) => m.Travels) },
       { path: 'archives', component: Archives },
       { path: 'contacts', component: Contacts }
     ]

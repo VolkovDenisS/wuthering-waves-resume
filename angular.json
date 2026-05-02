@@ -29,6 +29,7 @@
                 "input": "public"
               }
             ],
+            "allowedCommonJsDependencies": ["frame-ticker"],
             "styles": ["src/styles.scss"]
           },
           "configurations": {

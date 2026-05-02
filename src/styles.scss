@@ -49,6 +49,56 @@
   border: 1px solid theme('colors.ww-border');
 }
 
+.ww-resonance-bg {
+  overflow: hidden;
+  background:
+    linear-gradient(112deg, rgba(4, 5, 8, 0.98) 0%, rgba(7, 10, 16, 0.94) 42%, rgba(5, 12, 18, 0.88) 70%, rgba(8, 8, 11, 0.96) 100%),
+    radial-gradient(ellipse at 74% 28%, rgba(0, 229, 255, 0.18), transparent 34%),
+    radial-gradient(ellipse at 18% 82%, rgba(243, 200, 79, 0.11), transparent 28%);
+}
+
+.ww-resonance-bg::before,
+.ww-resonance-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ww-resonance-bg::before {
+  opacity: 0.9;
+  background:
+    linear-gradient(103deg, transparent 0 18%, rgba(44, 52, 70, 0.36) 18.2% 21%, transparent 21.2% 100%),
+    linear-gradient(287deg, transparent 0 56%, rgba(0, 229, 255, 0.13) 56.2% 56.55%, transparent 56.8% 100%),
+    linear-gradient(287deg, transparent 0 62%, rgba(243, 200, 79, 0.16) 62.1% 62.35%, transparent 62.55% 100%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 28px);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.86));
+}
+
+.ww-resonance-bg::after {
+  opacity: 0.42;
+  background:
+    repeating-radial-gradient(ellipse at 68% 46%, transparent 0 36px, rgba(0, 229, 255, 0.09) 37px 38px, transparent 39px 68px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 18px);
+  mix-blend-mode: screen;
+}
+
+.ww-resonance-bg--splash {
+  background:
+    linear-gradient(112deg, rgba(4, 5, 8, 0.96) 0%, rgba(8, 12, 22, 0.9) 48%, rgba(5, 16, 22, 0.88) 72%, rgba(8, 8, 11, 0.96) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(0, 229, 255, 0.24), transparent 30%),
+    radial-gradient(ellipse at 50% 62%, rgba(243, 200, 79, 0.16), transparent 22%);
+}
+
+.ww-resonance-bg--splash::before {
+  opacity: 1;
+  background:
+    linear-gradient(104deg, transparent 0 30%, rgba(58, 68, 92, 0.38) 30.2% 34%, transparent 34.2% 100%),
+    linear-gradient(76deg, transparent 0 60%, rgba(0, 229, 255, 0.16) 60.1% 60.42%, transparent 60.6% 100%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 34px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.62));
+}
+
 .scanlines {
   background: linear-gradient(
     to bottom,

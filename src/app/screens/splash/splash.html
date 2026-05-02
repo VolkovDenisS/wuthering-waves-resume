@@ -1,9 +1,8 @@
 <div #splashContainer class="relative w-full h-[100dvh] flex flex-col items-center justify-center bg-ww-bg text-ww-text cursor-pointer overflow-hidden" (click)="startGame()">
   
   <!-- Background Layers -->
-  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-35 mix-blend-screen"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-ww-bg via-black/60 to-transparent"></div>
-  <div class="absolute inset-x-0 top-1/2 h-40 -translate-y-1/2 bg-gradient-to-r from-transparent via-ww-cyan/10 to-transparent blur-3xl"></div>
+  <div class="absolute inset-0 ww-resonance-bg ww-resonance-bg--splash"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-ww-bg via-black/45 to-transparent"></div>
   <div class="absolute inset-0 scanlines pointer-events-none opacity-50 z-50"></div>
 
   <!-- Decorative HUD Elements -->
