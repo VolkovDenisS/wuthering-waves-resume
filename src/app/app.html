@@ -1,4 +1,12 @@
 <router-outlet></router-outlet>
+
+<!-- Global Transition Overlay -->
+<div 
+  class="fixed inset-0 z-[9999] bg-white pointer-events-none transition-opacity duration-700 ease-in-out"
+  [class.opacity-100]="transition.isActive()"
+  [class.opacity-0]="!transition.isActive()"
+></div>
+
 <div
   class="site-cursor"
   [class.site-cursor--visible]="cursorVisible()"

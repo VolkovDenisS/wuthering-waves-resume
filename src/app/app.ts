@@ -1,5 +1,6 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, signal, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TransitionService } from './transition.service';
 
 type CursorMode = 'normal' | 'link' | 'text' | 'vertical' | 'horizontal' | 'working' | 'unavailable';
 
@@ -10,6 +11,7 @@ type CursorMode = 'normal' | 'link' | 'text' | 'vertical' | 'horizontal' | 'work
   styleUrl: './app.scss',
 })
 export class App {
+  protected readonly transition = inject(TransitionService);
   protected readonly title = signal('frontend');
   protected readonly cursorX = signal(0);
   protected readonly cursorY = signal(0);

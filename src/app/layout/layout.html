@@ -1,13 +1,14 @@
-<div #mainLayout class="w-full h-[100dvh] bg-ww-bg flex overflow-hidden relative font-sans text-ww-text">
+<div #mainLayout class="w-full h-[100dvh] bg-ww-bg flex overflow-hidden relative font-sans text-ww-text" (mousemove)="onMouseMove($event)">
   
   <!-- Background Layers -->
   <div class="absolute inset-0 ww-resonance-bg"></div>
+  <div #particlesContainer class="absolute inset-0 z-0"></div>
   <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
   <div class="absolute inset-0 scanlines pointer-events-none opacity-50 z-50"></div>
 
-  <!-- Decorative Corner Brackets -->
-  <div class="absolute top-4 left-4 w-8 h-8 md:w-12 md:h-12 border-t-2 border-l-2 border-ww-border z-10 opacity-30 md:opacity-50"></div>
-  <div class="absolute bottom-4 left-4 w-8 h-8 md:w-12 md:h-12 border-b-2 border-l-2 border-ww-border z-10 opacity-30 md:opacity-50"></div>
+  <!-- Decorative Corner Brackets with Parallax -->
+  <div #cornerTL class="absolute top-4 left-4 w-8 h-8 md:w-12 md:h-12 border-t-2 border-l-2 border-ww-border z-10 opacity-30 md:opacity-50"></div>
+  <div #cornerBL class="absolute bottom-4 left-4 w-8 h-8 md:w-12 md:h-12 border-b-2 border-l-2 border-ww-border z-10 opacity-30 md:opacity-50"></div>
 
   <!-- Main Content Area (Left/Center) -->
   <main class="flex-1 relative z-10 h-full p-4 md:p-16 2xl:p-12 pl-6 md:pl-24 2xl:pl-20 overflow-y-auto overflow-x-hidden">

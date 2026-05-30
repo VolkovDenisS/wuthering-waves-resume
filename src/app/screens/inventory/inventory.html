@@ -1,4 +1,4 @@
-<div class="h-full animate-fade-in flex flex-col relative max-w-5xl py-8 md:py-0">
+<div class="h-full flex flex-col relative max-w-5xl py-8 md:py-0">
   <div class="absolute -top-10 -right-10 text-[6rem] md:text-[8rem] font-bold text-white/[0.03] select-none pointer-events-none z-[-1] leading-none uppercase text-right">
     ECHOES
   </div>
@@ -27,9 +27,11 @@
     </div>
 
     <!-- Empty slots for visual effect -->
-    <div *ngFor="let i of [1,2,3,4,5,6,7]" class="clip-slant aspect-square bg-transparent border border-ww-border/30 flex flex-col items-center justify-center opacity-30 md:opacity-50 relative">
-      <div class="w-6 h-6 md:w-8 md:h-8 rotate-45 border border-ww-border/30 mb-2"></div>
-      <span class="text-ww-border font-mono text-[6px] md:text-[8px] uppercase tracking-widest">Empty</span>
+    <div *ngFor="let i of [1,2,3,4,5,6,7]" class="clip-slant aspect-square bg-transparent border border-ww-border/30 flex flex-col items-center justify-center opacity-30 md:opacity-50 relative group/empty overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent translate-y-full group-hover/empty:translate-y-0 transition-transform duration-500"></div>
+      <div class="w-6 h-6 md:w-8 md:h-8 rotate-45 border border-ww-border/30 mb-2 group-hover/empty:border-ww-border/60 transition-colors"></div>
+      <span class="text-ww-border font-mono text-[6px] md:text-[8px] uppercase tracking-widest group-hover/empty:text-ww-text transition-colors">Empty</span>
+      <div class="absolute top-0 left-0 w-full h-[1px] bg-white/20 -translate-x-full group-hover/empty:translate-x-full transition-transform duration-1000"></div>
     </div>
 
   </div>

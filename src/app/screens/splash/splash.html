@@ -6,12 +6,28 @@
   <div class="absolute inset-0 scanlines pointer-events-none opacity-50 z-50"></div>
 
   <!-- Decorative HUD Elements -->
-  <div class="absolute top-8 left-8 flex items-center gap-2 opacity-50">
-    <div class="w-1.5 h-1.5 bg-violet-400 rotate-45"></div>
-    <span class="font-mono text-[10px] tracking-widest uppercase">SYS.INIT v1.0.4</span>
+  <div class="absolute top-8 left-8 flex flex-col gap-1 opacity-50">
+    <div class="flex items-center gap-2">
+      <div class="w-1.5 h-1.5 bg-ww-accent rotate-45"></div>
+      <span class="font-mono text-[10px] tracking-widest uppercase text-white">SYS.INIT v1.0.4</span>
+    </div>
+    <div class="flex items-center gap-2 text-[8px] font-mono text-ww-cyan/70 ml-3">
+      <span class="animate-pulse">●</span>
+      <span>ENCRYPTION: AES-256-GCM</span>
+    </div>
   </div>
+
+  <!-- Server Selection (Decorative) -->
+  <div class="absolute top-8 right-8 hidden md:flex flex-col items-end gap-1 opacity-50 hover:opacity-100 transition-opacity group">
+    <div class="flex items-center gap-2">
+      <span class="font-mono text-[10px] tracking-widest uppercase">Server:</span>
+      <span class="text-ww-accent font-bold text-[10px] tracking-widest uppercase">CORE_HUB_RU</span>
+    </div>
+    <div class="w-24 h-[1px] bg-gradient-to-l from-ww-accent/50 to-transparent"></div>
+  </div>
+
   <div class="absolute bottom-8 right-8 flex items-center gap-2 opacity-50">
-    <span class="font-mono text-[10px] tracking-widest uppercase">AWAITING RESONANCE</span>
+    <span class="font-mono text-[10px] tracking-widest uppercase">{{ loadingStatus }}</span>
     <div class="w-1.5 h-1.5 bg-emerald-400 rotate-45"></div>
   </div>
 
@@ -31,14 +47,19 @@
       Resonator Profile
     </h2>
     
-    <div #startText class="flex flex-col items-center animate-pulse">
+    <div #startText class="flex flex-col items-center" [class.opacity-0]="isStarting" [class.animate-pulse]="!isStarting">
       <p class="text-xs md:text-sm tracking-[0.3em] font-mono text-violet-300 uppercase mb-2 drop-shadow-[0_0_8px_rgba(167,139,250,0.55)]">
         Click to Start
       </p>
       <div class="w-px h-8 md:h-12 bg-gradient-to-b from-violet-300 via-emerald-300/50 to-transparent"></div>
     </div>
+
+    <!-- Loading Bar (Shown after click) -->
+    <div *ngIf="isStarting" class="flex flex-col items-center mt-4 animate-fade-in">
+      <div class="w-48 md:w-64 h-1 bg-white/10 relative overflow-hidden clip-slant-tab mb-2">
+        <div class="absolute inset-0 bg-ww-accent transition-all duration-150 ease-out shadow-[0_0_10px_rgba(243,200,79,0.5)]" [style.width.%]="loadingProgress"></div>
+      </div>
+      <span class="font-mono text-[8px] tracking-[0.2em] uppercase text-ww-accent/70">{{ loadingStatus }}</span>
+    </div>
   </div>
-  
-  <!-- Overlay for transition -->
-  <div #transitionOverlay class="absolute inset-0 bg-white z-50 pointer-events-none opacity-0 mix-blend-overlay"></div>
 </div>

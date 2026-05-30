@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TransitionService } from '../../transition.service';
 import gsap from 'gsap';
 
 @Component({
@@ -12,18 +13,28 @@ import gsap from 'gsap';
 export class Splash implements AfterViewInit {
   @ViewChild('splashContainer') splashContainer!: ElementRef;
   @ViewChild('startText') startText!: ElementRef;
-  @ViewChild('transitionOverlay') transitionOverlay!: ElementRef;
 
+  private transition = inject(TransitionService);
   isStarting = false;
+  loadingProgress = 0;
+  loadingStatus = 'INITIALIZING...';
+
+  private readonly statusMessages = [
+    'CONNECTING...',
+    'VERIFYING...',
+    'DECRYPTING...',
+    'CALIBRATING...',
+    'STABILIZING...',
+    'COMPLETE'
+  ];
 
   constructor(private router: Router) {}
 
   ngAfterViewInit() {
-    // Initial fade in
     gsap.from(this.splashContainer.nativeElement, {
-      opacity: 0.25,
-      duration: 0.8,
-      ease: 'power2.inOut'
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.out'
     });
   }
 
@@ -31,21 +42,37 @@ export class Splash implements AfterViewInit {
     if (this.isStarting) return;
     this.isStarting = true;
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        this.router.navigate(['/main']);
+    // Slower, more deliberate loading sequence (~2.5s total)
+    let currentStep = 0;
+    const totalSteps = this.statusMessages.length;
+    
+    const interval = setInterval(() => {
+      if (currentStep < totalSteps) {
+        this.loadingStatus = this.statusMessages[currentStep];
+        this.loadingProgress = ((currentStep + 1) / totalSteps) * 100;
+        currentStep++;
+      } else {
+        clearInterval(interval);
+        this.triggerTransition();
       }
-    });
+    }, 400);
+  }
 
-    // Wuthering Waves style flash transition
-    tl.to(this.startText.nativeElement, {
-      opacity: 0,
-      duration: 0.2
-    })
-    .to(this.transitionOverlay.nativeElement, {
-      opacity: 1,
-      duration: 0.8,
-      ease: 'expo.inOut'
+  private triggerTransition() {
+    // Start global white flash and mark as entrance
+    this.transition.start(true);
+
+    // Give the overlay a moment to fade in before navigation
+    setTimeout(() => {
+      this.router.navigate(['/main']);
+    }, 700);
+
+    // Subtle scale/blur on splash while flashing
+    gsap.to(this.splashContainer.nativeElement, {
+      scale: 1.05,
+      filter: 'blur(10px) brightness(1.2)',
+      duration: 0.7,
+      ease: 'power2.inOut'
     });
   }
 }

@@ -32,6 +32,15 @@
 }
 
 /* Wuthering Waves Specific UI Effects */
+@keyframes fade-in {
+  from { opacity: 0; filter: blur(10px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
 .clip-slant {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
 }
@@ -49,13 +58,25 @@
 
 .clip-slant-tab:hover:not(.active) {
   background-color: theme('colors.ww-border');
+  padding-right: 1.5rem;
 }
 
-.ww-glass {
-  background: theme('colors.ww-panel');
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid theme('colors.ww-border');
+.clip-slant-tab {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.ww-glow-hover:hover {
+  text-shadow: 0 0 15px theme('colors.ww-accent');
+  color: theme('colors.ww-accent');
+}
+
+.ww-interactive-node {
+  transition: all 0.3s ease;
+  &:hover {
+    filter: drop-shadow(0 0 8px currentColor);
+    transform: scale(1.1);
+  }
 }
 
 .ww-resonance-bg {
@@ -94,18 +115,18 @@
 
 .ww-resonance-bg--splash {
   background:
-    linear-gradient(112deg, rgba(4, 5, 8, 0.96) 0%, rgba(8, 12, 22, 0.9) 48%, rgba(5, 16, 22, 0.88) 72%, rgba(8, 8, 11, 0.96) 100%),
-    radial-gradient(ellipse at 50% 45%, rgba(0, 229, 255, 0.24), transparent 30%),
-    radial-gradient(ellipse at 50% 62%, rgba(243, 200, 79, 0.16), transparent 22%);
+    linear-gradient(112deg, rgba(10, 10, 12, 0.98) 0%, rgba(7, 10, 16, 0.94) 42%, rgba(5, 12, 18, 0.88) 70%, rgba(8, 8, 11, 0.96) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(0, 229, 255, 0.15), transparent 35%),
+    radial-gradient(ellipse at 50% 62%, rgba(243, 200, 79, 0.12), transparent 25%);
 }
 
 .ww-resonance-bg--splash::before {
-  opacity: 1;
+  opacity: 0.9;
   background:
-    linear-gradient(104deg, transparent 0 30%, rgba(58, 68, 92, 0.38) 30.2% 34%, transparent 34.2% 100%),
-    linear-gradient(76deg, transparent 0 60%, rgba(0, 229, 255, 0.16) 60.1% 60.42%, transparent 60.6% 100%),
-    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 34px);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.62));
+    linear-gradient(104deg, transparent 0 30%, rgba(44, 52, 70, 0.36) 30.2% 34%, transparent 34.2% 100%),
+    linear-gradient(76deg, transparent 0 60%, rgba(0, 229, 255, 0.12) 60.1% 60.42%, transparent 60.6% 100%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 34px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7));
 }
 
 .scanlines {

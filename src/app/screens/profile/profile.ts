@@ -29,6 +29,43 @@ interface FactionGroup {
 export class Profile {
   activeNode: ResonanceNode | null = null;
 
+  // Radar Chart Data
+  stats = [
+    { label: 'Leadership', value: 90 },
+    { label: 'BMC Helix', value: 100 },
+    { label: 'Development', value: 85 },
+    { label: 'Architecture', value: 80 },
+    { label: 'Strategy', value: 75 }
+  ];
+
+  radarPoints = this.calculateRadarPoints(this.stats);
+
+  getStatX(index: number, value: number): number {
+    const angleStep = (Math.PI * 2) / this.stats.length;
+    const angle = index * angleStep - Math.PI / 2;
+    return Math.cos(angle);
+  }
+
+  getStatY(index: number, value: number): number {
+    const angleStep = (Math.PI * 2) / this.stats.length;
+    const angle = index * angleStep - Math.PI / 2;
+    return Math.sin(angle);
+  }
+
+  private calculateRadarPoints(stats: any[]): string {
+    const centerX = 50;
+    const centerY = 50;
+    const radius = 40;
+    const angleStep = (Math.PI * 2) / stats.length;
+
+    return stats.map((stat, i) => {
+      const angle = i * angleStep - Math.PI / 2;
+      const x = centerX + radius * (stat.value / 100) * Math.cos(angle);
+      const y = centerY + radius * (stat.value / 100) * Math.sin(angle);
+      return `${x},${y}`;
+    }).join(' ');
+  }
+
   private readonly magnitNodes: ResonanceNode[] = [
     {
       id: 'magnit-analyst',
